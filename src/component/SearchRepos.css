@@ -1,0 +1,20 @@
+.searchRepos-box{
+    display: flex;
+    flex-direction: row;
+}
+.search-box{
+    width: 180px;
+    height: 25px;
+    padding: 0;
+    font-size: 15px;
+    padding: 0;
+    border: 1px #c0bebe solid;
+    margin: 0;
+}
+button{
+    width: 70px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
