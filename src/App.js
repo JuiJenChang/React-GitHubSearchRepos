@@ -27,23 +27,26 @@ class App extends Component {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        this.state.requests += 1;
-        this.state.success += 1;
-        let reposLsit = data.map((item, i) => <li key={i}><a href={item.html_url} target="_blank">{item.name}</a></li>);
-        this.setState({
-          repos: reposLsit,
-          requests: this.state.requests,
-          success: this.state.success,
-        })
-        console.log(data);
-      })
-      .catch((error) => {
-        this.state.fails += 1;
-        this.setState({
-          repos: " User could not be found. ",
-          requests: this.state.requests,
-          fails: this.state.fails,
-        })
+        if (data.length >= 0) {
+          const countRequests = this.state.requests + 1;
+          const countSuccess = this.state.success + 1;
+          let reposLsit = data.map((item, i) => <li key={i}><a href={item.html_url} target="_blank">{item.name}</a></li>);
+          this.setState({
+            repos: reposLsit,
+            requests: countRequests,
+            success: countSuccess,
+          })
+          console.log(data);
+        }
+        else {
+          const countRequests = this.state.requests + 1;
+          const countFail = this.state.fails + 1;
+          this.setState({
+            repos: " User could not be found. ",
+            requests: countRequests,
+            fails: countFail,
+          })
+        }
       })
   }
 
