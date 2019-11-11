@@ -12,10 +12,9 @@ class App extends Component {
     this.state = {
       username: '',
       name: '',
-      avatar: '',
-      repos: '',
+      avatar: undefined,
+      repos: [],
       homeUrl: '',
-      notFound: '',
       requests: 0,
       success: 0,
       fails: 0,
@@ -30,19 +29,17 @@ class App extends Component {
         if (data.length >= 0) {
           const countRequests = this.state.requests + 1;
           const countSuccess = this.state.success + 1;
-          let reposLsit = data.map((item, i) => <li key={i}><a href={item.html_url} target="_blank">{item.name}</a></li>);
           this.setState({
-            repos: reposLsit,
+            repos: data,
             requests: countRequests,
             success: countSuccess,
           })
-          console.log(data);
         }
         else {
           const countRequests = this.state.requests + 1;
           const countFail = this.state.fails + 1;
           this.setState({
-            repos: " User could not be found. ",
+            repos: [" User could not be found. "],
             requests: countRequests,
             fails: countFail,
           })
@@ -60,8 +57,8 @@ class App extends Component {
           name: data.name,
           avatar: data.avatar_url,
           homeUrl: data.html_url,
-          notFound: data.message
         })
+        console.log(this.state)
       })
   }
 
