@@ -1,3 +1,9 @@
+.search-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .searchRepos-avatar{
     width: 250px;
     height: 250px;

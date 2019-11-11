@@ -11,7 +11,7 @@ class Repos extends Component {
                 </a>
             </li>);
         return (
-            <div>
+            <div className="search-data">
                 {data.avatar !== undefined && <img src={data.avatar} className="searchRepos-avatar" />}
                 <h2 className="searchRepos-name">
                     {data.name || data.username}
