@@ -11,7 +11,6 @@ class App extends Component {
 
     this.state = {
       username: '',
-      name: '',
       avatar: undefined,
       repos: [],
       homeUrl: '',
@@ -54,7 +53,6 @@ class App extends Component {
       .then((data) => {
         this.setState({
           username: data.login,
-          name: data.name,
           avatar: data.avatar_url,
           homeUrl: data.html_url,
         })
@@ -66,7 +64,9 @@ class App extends Component {
     return (
       <div className="searchRepos-main">
         <h1>Search GitHub Repos</h1>
-        <SearchRepos fetchProfile={this.fetchProfile} fetchRepos={this.fetchRepos} />
+        <SearchRepos fetchProfile={this.fetchProfile}
+          fetchRepos={this.fetchRepos}
+        />
         <Repos data={this.state} />
       </div>
     );
